@@ -1,0 +1,34 @@
+import csv
+import pandas
+import collections 
+
+
+arquivo = open('imigrantes.csv' , 'r' , encoding='ISO-8859-1')
+leitor = csv.DictReader(arquivo)
+next(leitor)
+
+permanente = 0
+fronteirico = 0
+provisorio = 0
+temporario = 0
+outros = 0
+
+for linha in leitor:
+    if linha['CLASSIFICACAO'] == 'PERMANENTE':
+        permanente += 1
+    elif linha['CLASSIFICACAO'] == 'FRONTEIRIÇO':
+            fronteirico += 1
+    elif linha['CLASSIFICACAO'] == 'PROVISÓRIO':
+        provisorio += 1
+    elif linha['CLASSIFICACAO'] == 'TEMPORÁRIO':
+        temporario += 1
+    elif linha['CLASSIFICACAO'] == 'OUTROS':
+        outros += 1
+    
+
+    
+print(f"Total de imigrantes com visto permanente: {permanente}")
+print(f"Total de imigrantes com visto fronteiriço: {fronteirico}")
+print(f"Total de imigrantes com visto provisório: {provisorio}")
+print(f"Total de imigrantes com visto temporário: {temporario}")
+print(f"Total de imigrantes com outros tipos de visto: {outros}")
