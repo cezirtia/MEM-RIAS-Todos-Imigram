@@ -1,0 +1,15 @@
+import csv 
+import pandas 
+import collections
+
+arquivo = open('imigrantes.csv' , 'r' , encoding='ISO-8859-1') 
+leitor = csv.DictReader(arquivo)
+next(leitor)
+
+origem = collections.Counter()
+
+
+for linha in leitor: 
+    origem[linha['PNACI_DESC']] += 1
+      
+print(origem.most_common(4))
